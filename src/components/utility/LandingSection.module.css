@@ -18,6 +18,9 @@
 }
 
 .firstSection {
+
+  min-height: 40vh;
+
   @media (max-width: $mantine-breakpoint-sm) {
     margin-top: -150;
     margin-bottom: 50;

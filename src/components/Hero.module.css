@@ -2,21 +2,42 @@
   display: flex;
   overflow: hidden;
   font-weight: 800;
-  font-size: 3rem;
+  font-size: 2.75rem;
   line-height: 1.2;
-  margin-bottom: -50px;
+  margin-top: 24px;
+  /* margin-bottom: -50px; */
   color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
-}
-
-.gradientText {
-  font-size: 5rem;
-  margin-bottom: 24;
-
   @media (max-width: $mantine-breakpoint-sm) {
-    font-size: 3.5rem;
+    font-size: 2rem;
   }
 }
 
-.heroBox {
-  height: 400px;
+.gradientText {
+  background: -webkit-linear-gradient(
+    300deg, 
+    #74C0FC 0%,
+    #9775FA 25%,
+    #74C0FC 50%,
+    #9775FA 75%,
+    #74C0FC 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 300%;
+  font-size: 4.5rem;
+  margin-bottom: 12px;
+  margin-top: 0;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: 3rem;
+  }
+}
+
+.typed {
+  color: light-dark(var(--mantine-color-blue-3), var(--mantine-color-violet-4));
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: 2rem;
+  }
 }

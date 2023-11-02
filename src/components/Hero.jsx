@@ -1,49 +1,14 @@
-import { Group, Center, Box } from "@mantine/core"
+import { Group, Center, Box, Title } from "@mantine/core"
 import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
 
 import classes from "./Hero.module.css"
 
-function MotionContainer ({
-  animate,
-  action = false,
-  children,
-  component,
-  ...other
-}) {
-  if (action) {
-    return (
-      <Box
-        component={component}
-        initial={false}
-        animate={animate ? "animate" : "exit"}
-        // variants={varContainer()}
-        {...other}
-      >
-        {children}
-      </Box>
-    );
-  }
-
-  return (
-    <Box
-      component={component}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      // variants={varContainer()}
-      {...other}
-    >
-      {children}
-    </Box>
-  );
-}
-
 function TypedText() {
   return (
     <Typewriter
       options={{
-        strings: ["Software Engineer", "Data Engineer", "OS Contributor"],
+        strings: ["Full Stack Developer", "Engineering Graduate", "Nerd"],
         autoStart: true,
         loop: true,
         deleteSpeed: 50,
@@ -53,12 +18,12 @@ function TypedText() {
 }
 
 const letterVariants = {
-  hidden: { y: 20, opacity: 0 }, // Start from below the final position
+  hidden: { y: 20, opacity: 0 },
   visible: (custom) => ({
-    y: 0, // Animate to the final position
+    y: 0,
     opacity: 1,
     transition: {
-      delay: custom * 0.1, // Delay each letter based on its index
+      delay: custom * 0.1,
       type: 'spring',
       stiffness: 250,
       damping: 25,
@@ -73,16 +38,19 @@ const AnimatedLetter = ({ letter, index }) => {
       initial="hidden"
       animate="visible"
       variants={letterVariants}
-      style={{ display: 'inline-block' }} // Make sure each letter is treated as a separate block for individual animation
+      style={{ display: 'inline-block' }}
     >
       {letter}
     </motion.span>
   );
 };
 
+const fadeIn = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { duration: 1 } },
+};
 
-const titleText = ["Hi,", "_", "I'm"]
-const text = "Hello, I'm"
+const titleText = "Hello, I'm"
 const myName = "Alex Shaw"
 
 export default function Hero() {
@@ -91,12 +59,29 @@ export default function Hero() {
       <Center>
         <Box className={classes.heroBox}>
           <Box className={classes.greeting}>
-          {text.split('').map((letter, index) => letter === " " ? (
+          {titleText.split('').map((letter, index) => letter === " " ? (
             <span key={index}>&nbsp;</span>
           ) : (
             <AnimatedLetter key={index} letter={letter} index={index} />
           ))}
           </Box>
+          <motion.div variants={fadeIn} initial="initial" animate="animate">
+            <motion.h2
+              animate={{ backgroundPosition: ["0%", "200%"] }}
+              transition={{
+                repeatType: "reverse",
+                ease: "linear",
+                duration: 20,
+                repeat: Infinity,
+              }}
+              className={classes.gradientText}
+            >
+              {myName}
+            </motion.h2>
+          </motion.div>
+          <Title className={classes.typed}>
+              <TypedText />
+          </Title>
         </Box>
       </Center>
     </Group>
