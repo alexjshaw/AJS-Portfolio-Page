@@ -1,14 +1,16 @@
-import { Title } from "@mantine/core";
+import { ActionIcon } from "@mantine/core";
+
+import Hero from "../components/Hero"
+import Section from "../components/utility/LandingSection"
+
 import classes from "./LandingPage.module.css"
 
 export default function LandingPage() {
   return (
     <>
-          <Title
-          className={classes.testClass}
-          >
-            TEST
-          </Title>
+      <Section isFirst={true}>
+        <Hero />
+      </Section>
     </>
   )
 }
