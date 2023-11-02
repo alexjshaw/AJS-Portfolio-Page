@@ -53,15 +53,15 @@ function TypedText() {
 }
 
 const letterVariants = {
-  hidden: { y: 20, opacity: 0 }, // Start from below the final position
+  hidden: { y: 50, opacity: 0 }, // Start lower down, increase this value if you want a larger slide
   visible: (custom) => ({
-    y: 0, // Animate to the final position
+    y: 0, // End at the natural position of the letter
     opacity: 1,
     transition: {
-      delay: custom * 0.1, // Delay each letter based on its index
+      delay: custom * 0.2, // Delay each letter based on its index
       type: 'spring',
-      stiffness: 250,
-      damping: 25,
+      stiffness: 500,
+      damping: 1, // Adjust damping for a bit of bounce, if desired
     },
   }),
 };
@@ -73,13 +73,11 @@ const AnimatedLetter = ({ letter, index }) => {
       initial="hidden"
       animate="visible"
       variants={letterVariants}
-      style={{ display: 'inline-block' }} // Make sure each letter is treated as a separate block for individual animation
     >
       {letter}
     </motion.span>
-  );
+  )
 };
-
 
 const titleText = ["Hi,", "_", "I'm"]
 const text = "Hello, I'm"
@@ -90,13 +88,42 @@ export default function Hero() {
     <Group>
       <Center>
         <Box className={classes.heroBox}>
-          <Box className={classes.greeting}>
-          {text.split('').map((letter, index) => letter === " " ? (
-            <span key={index}>&nbsp;</span>
-          ) : (
+          {text.split('').map((letter, index) => (
+            // Render each letter as an animated component
             <AnimatedLetter key={index} letter={letter} index={index} />
           ))}
-          </Box>
+          {/* <MotionContainer
+            component={m.h3}
+            className={classes.greeting}
+          >
+                {titleText.map((text) =>
+                  text.split("").map((letter, index) =>
+                    letter === "_" ? (
+                      <span key={index}>&nbsp;</span>
+                    ) : (
+                      <m.span key={index} >
+                        {letter}
+                      </m.span>
+                    )
+                  )
+                )}
+            </MotionContainer>
+            <m.div>
+              <m.h2
+                animate={{
+                  backgroundPosition: "200%",
+                }}
+                transition={{
+                  repeatType: "reverse",
+                  ease: "linear",
+                  duration: 20,
+                  repeat: Infinity,
+                }}
+                className={classes.gradientText}
+              >
+                {myName}
+              </m.h2>
+            </m.div> */}
         </Box>
       </Center>
     </Group>
