@@ -1,138 +1,108 @@
 /* eslint-disable react/display-name */
-import { forwardRef } from "react";
+import { useState, useEffect } from "react";
 import {
   Container,
   Group,
   Text,
   Title,
   Box,
-  useMantineColorScheme
+  Switch,
+  useMantineColorScheme,
 } from "@mantine/core";
-import { CodeHighlight } from "@mantine/code-highlight";
-import classes from "./About.module.css"
-import { useEffect } from "react";
+import classes from "./About.module.css";
+import { Code, CodeOff } from "tabler-icons-react";
+import {
+  aboutCodeNarrow,
+  aboutCodeWide,
+  aboutMeWide,
+} from "../assets/data/AboutMe";
+import { useMediaQuery } from "@mantine/hooks";
 
 import hljs from "highlight.js/lib/core";
-import javascript from 'highlight.js/lib/languages/javascript'
-hljs.registerLanguage('javascript', javascript);
+import javascript from "highlight.js/lib/languages/javascript";
+hljs.registerLanguage("javascript", javascript);
 
-
-const BoxWrapper = forwardRef(
-  ({ children, align, withBackground, ...props }, ref) => {
-    return (
-      <Box
-        className={classes.boxWrapper}
-        ref={ref}
-        {...props}
-      >
-        {children}
-      </Box>
-    );
-  }
-);
-
-function getAge() {
-  const tempBirthDate = new Date("1990-10-23");
-  const tempToday = new Date();
-  let age = tempToday.getFullYear() - tempBirthDate.getFullYear();
-  const month = tempToday.getMonth() - tempBirthDate.getMonth();
-  if (
-    month < 0 ||
-    (month === 0 && tempToday.getDate() < tempBirthDate.getDate())
-  ) {
-    age--;
-  }
-  return age;
-}
-
-const aboutMe = {
-  title: "Let me introduce myself",
-  details: [
-    {
-      id: 1,
-      text: ` Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur enim lorem, rutrum vitae nunc ultrices, iaculis vestibulum metus. Suspendisse potenti. `,
-      icon: "🧔🏻",
-    },
-    {
-      id: 2,
-      text: ` Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur enim lorem, rutrum vitae nunc ultrices, iaculis vestibulum metus. Suspendisse potenti. `,
-      icon: "🧑🏼‍🎓",
-    },
-    {
-      id: 3,
-      text: ` Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur enim lorem, rutrum vitae nunc ultrices, iaculis vestibulum metus. Suspendisse potenti. `,
-      icon: "🎯",
-    },
-    {
-      id: 4,
-      text: " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tincidunt ipsum vitae. ",
-      icon: "💻",
-    },
-    {
-      id: 5,
-      text: `
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed vestibulum odio. Morbi in lorem eget tellus faucibus dictum non eget lectus. Sed maximus eros a efficitur semper. Aliquam lorem.
-           `,
-      icon: "🔎",
-    }
-  ],
-};
-
-const aboutMeCode = `import Alex from "@alex/core"
-
-export default function AboutMe() {
-  return (
-    <Alex ${aboutMe.details.map(
-      (item) =>
-        `
-      ${item.icon} = {${item.text}}`
-    )}
-    />
-  );
-}`;
+const aboutMeTitle = "A little bit about myself";
 
 export default function About() {
   const { colorScheme } = useMantineColorScheme();
+  const [codeView, setCodeView] = useState(true);
+  const narrowView = useMediaQuery("(max-width: 48em)");
 
   useEffect(() => {
-    const linkElement = document.createElement('link');
-    linkElement.rel = 'stylesheet';
-    linkElement.type = 'text/css';
-    
-    linkElement.href = colorScheme === 'dark'
-      ? '/github-dark-dimmed.css'
-      : '/github.css';
-  
+    const linkElement = document.createElement("link");
+    linkElement.rel = "stylesheet";
+    linkElement.type = "text/css";
+
+    linkElement.href =
+      colorScheme === "dark" ? "/github-dark-dimmed.css" : "/github.css";
+
     document.head.appendChild(linkElement);
-  
-    document.querySelectorAll('pre code').forEach((block) => {
+
+    document.querySelectorAll("pre code").forEach((block) => {
       if (!block.dataset.highlighted) {
         hljs.highlightElement(block);
         block.dataset.highlighted = true;
       }
     });
-  
+
     return () => {
       document.head.removeChild(linkElement);
     };
-  }, [colorScheme]);
-  
-  
+  }, [colorScheme, narrowView, codeView]);
+
+  const AboutNoCode = () => (
+    <>
+      {aboutMeWide.details.map((item, index) => (
+        <div key={index}>
+          <Text size="lg" key={item.id} className="text" mt={5}>
+            <span style={{ marginRight: 5 }}>{item.icon}</span>
+            {item.text}
+          </Text>
+        </div>
+      ))}
+    </>
+  );
+
   return (
     <Container px="xl" size="lg">
-      <BoxWrapper withBackground={false}>
-        <Group mb={25}>
-          <Title
-            order={1}
-            className={classes.title}
-          >
-            {aboutMe.title}
+      <Box className={classes.aboutBox}>
+        <Group justify="space-between" mb={25}>
+          <Title order={1} className={classes.title}>
+            {aboutMeTitle}
           </Title>
+          <Switch
+            label={codeView ? "Code On" : "Code Off"}
+            checked={codeView}
+            onChange={() => setCodeView(!codeView)}
+            visibleFrom="sm"
+            onLabel={<Code className={classes.codeLabel} />}
+            offLabel={<CodeOff className={classes.codeOffLabel} />}
+            color="violet"
+            size="lg"
+          />
         </Group>
-        <pre className={classes.codeBlock}><code className="language-javascript">
-          {aboutMeCode}
-        </code></pre>
-      </BoxWrapper>
+        {!narrowView ? (
+          codeView ? (
+            <>
+              <Container px={0} className={classes.codeNarrow}>
+                <pre className={classes.codeBlock}>
+                  <code className="language-javascript">{aboutCodeNarrow}</code>
+                </pre>
+              </Container>
+              <Container px={0} className={classes.codeWide}>
+                <pre className={classes.codeBlock}>
+                  <code className="language-javascript">{aboutCodeWide}</code>
+                </pre>
+              </Container>
+            </>
+          ) : (
+            <AboutNoCode />
+          )
+        ) : (
+          <AboutNoCode />
+        )}
+      </Box>
     </Container>
-  )
+  );
 }

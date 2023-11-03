@@ -2,7 +2,7 @@
   color: light-dark(var(--mantine-color-blue-3), var(--mantine-color-violet-4));
 }
 
-.boxWrapper {
+.aboutBox {
   max-width: 960px;
   border-radius: var(--mantine-radius-md);
   margin-top: var(--mantine-spacing-xl);
@@ -16,8 +16,34 @@
   };
 }
 
+.codeLabel {
+  size: 16;
+  stroke-width: 2.5;
+  color: var(--mantine-color-gray-4);
+}
+
+.codeOffLabel {
+  size: 16;
+  stroke-width: 2.5;
+  color: var(--mantine-color-violet-4);
+}
+
 .codeBlock {
   white-space: pre-wrap;
   word-wrap: break-word;
-  overflow-x: auto; /* Fallback for horizontal scrolling */
+  overflow-x: auto;
+}
+
+.codeNarrow {
+  @media (min-width: $mantine-breakpoint-md) {
+    display: none;
+  }
+}
+
+.codeWide {
+  display: none;
+
+  @media (min-width: $mantine-breakpoint-md) {
+    display: block;
+  }
 }
