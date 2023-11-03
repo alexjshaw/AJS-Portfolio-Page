@@ -1,3 +1,7 @@
+.heroBox {
+  min-width: 365px;
+}
+
 .greeting {
   display: flex;
   overflow: hidden;

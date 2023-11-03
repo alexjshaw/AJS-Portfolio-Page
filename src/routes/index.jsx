@@ -3,10 +3,10 @@ import { Navigate, useRoutes } from "react-router-dom";
 import { MainLayout } from "../layouts/MainLayout";
 import FallbackLoader from "../components/utility/FallbackLoader";
 
-const Loadable = (Component) => (props) => {
+const Loadable = (Component) => () => {
   return (
     <Suspense fallback={<FallbackLoader />}>
-      <Component {...props} />
+      <Component />
     </Suspense>
   );
 };
