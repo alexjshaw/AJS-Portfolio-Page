@@ -3,12 +3,16 @@ import { Navigate, useRoutes } from "react-router-dom";
 import { MainLayout } from "../layouts/MainLayout";
 import FallbackLoader from "../components/utility/FallbackLoader";
 
-const Loadable = (Component) => () => {
-  return (
+const Loadable = (Component) => {
+  const LoadableComponent = () => (
     <Suspense fallback={<FallbackLoader />}>
       <Component />
     </Suspense>
   );
+
+  LoadableComponent.displayName = `Loadable(${Component.displayName || Component.name || 'Component'})`;
+
+  return LoadableComponent;
 };
 
 export default function Routes() {
