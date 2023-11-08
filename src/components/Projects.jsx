@@ -81,7 +81,7 @@ export default function Skills() {
         onClose={close}
         withCloseButton={false}
         centered
-        size="70%"
+        size="90%"
         overlayProps={{
           backgroundOpacity: 0.55,
           blur: 10,

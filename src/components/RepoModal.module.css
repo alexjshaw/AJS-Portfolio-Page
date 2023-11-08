@@ -4,6 +4,7 @@
 }
 
 .button {
+  margin-top: 10px;
   background-color: light-dark(var(--mantine-color-blue-3), var(--mantine-color-violet-4));
 }
 
