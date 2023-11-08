@@ -28,14 +28,6 @@ export default function Skills() {
                   cols={{ base: 3, sm: 5, md: 7, lg: 9}}
                   spacing={{ base: "xs", sm: "sm", md: "lg", lg: "xl"}}
                   verticalSpacing={"lg"}
-                  // cols={9}
-                  // spacing="xl"
-                  // breakpoints={[
-                  //   { maxWidth: 980, cols: 7, spacing: "md" },
-                  //   { maxWidth: 755, cols: 5, spacing: "sm" },
-                  //   { maxWidth: 600, cols: 4, spacing: "sm" },
-                  //   { maxWidth: 450, cols: 3, spacing: "sm" },
-                  // ]}
                 >
                   {dataItem.webp.map((subDataitem) => (
                     <motion.img

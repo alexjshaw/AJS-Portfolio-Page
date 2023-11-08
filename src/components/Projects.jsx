@@ -76,8 +76,18 @@ export default function Skills() {
 
   return (
     <Container px="xl" size="lg">
-      <Modal opened={opened} onClose={close} withCloseButton={false} centered>
-        {selectedRepo && <RepoModal repo={selectedRepo} />}
+      <Modal
+        opened={opened}
+        onClose={close}
+        withCloseButton={false}
+        centered
+        size="70%"
+        overlayProps={{
+          backgroundOpacity: 0.55,
+          blur: 10,
+        }}
+      >
+        {selectedRepo && <RepoModal repo={selectedRepo} handleRepoClick={handleRepoClick} />}
       </Modal>
       <Box className={classes.projectsBox}>
         <Title className={classes.title} order={1}>
@@ -111,12 +121,16 @@ export default function Skills() {
                   </Text>
                 <Group>
                     <Button
+                      className={classes.button}
                       onClick={(event) => handleRepoClick(event, repo.svn_url)}
                     >
                       View Repo
                     </Button>
-                    {/* <Button onClick={open}>More Info</Button> */}
-                    <Button onClick={() => handleMoreInfoClick(repo)}>More Info</Button>
+                    <Button
+                      className={classes.button}
+                      onClick={() => handleMoreInfoClick(repo)}>
+                        More Info
+                      </Button>
                   </Group>
               </Box>
             </Grid.Col>

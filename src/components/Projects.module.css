@@ -31,5 +31,14 @@
   border-radius: var(--mantine-radius-md);
   box-shadow: var(--mantine-shadow-md);
   border: 1px solid var(--mantine-color-gray-3);
-  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));;
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));
+}
+
+.button {
+  background-color: light-dark(var(--mantine-color-blue-3), var(--mantine-color-violet-4));
+}
+
+.button:hover {
+  background-color: light-dark(var(--mantine-color-blue-1), var(--mantine-color-violet-6));
+  color: light-dark(var(--mantine-color-dark-9), var(--mantine-color-white));
 }

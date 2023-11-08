@@ -1,0 +1,13 @@
+.title {
+  margin-bottom: 10px;
+  color: light-dark(var(--mantine-color-blue-3), var(--mantine-color-violet-4));
+}
+
+.button {
+  background-color: light-dark(var(--mantine-color-blue-3), var(--mantine-color-violet-4));
+}
+
+.button:hover {
+  background-color: light-dark(var(--mantine-color-blue-1), var(--mantine-color-violet-6));
+  color: light-dark(var(--mantine-color-dark-9), var(--mantine-color-white));
+}
