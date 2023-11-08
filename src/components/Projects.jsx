@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-// Mantine
+import { useDisclosure } from "@mantine/hooks";
 import {
   Box,
+  Modal,
   Container,
   Grid,
   Group,
@@ -10,6 +11,7 @@ import {
   Button,
   Badge,
 } from "@mantine/core";
+import RepoModal from "./RepoModal"
 import classes from "./Projects.module.css";
 import { BrandGithub } from "tabler-icons-react";
 
@@ -42,6 +44,8 @@ const getTagColor = (type) => {
 
 export default function Skills() {
   const [repos, setRepos] = useState([]);
+  const [opened, { open, close }] = useDisclosure(false);
+  const [selectedRepo, setSelectedRepo] = useState(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -65,8 +69,16 @@ export default function Skills() {
     event.stopPropagation();
   };
 
+  const handleMoreInfoClick = (repo) => {
+    setSelectedRepo(repo);
+    open();
+  };
+
   return (
     <Container px="xl" size="lg">
+      <Modal opened={opened} onClose={close} withCloseButton={false} centered>
+        {selectedRepo && <RepoModal repo={selectedRepo} />}
+      </Modal>
       <Box className={classes.projectsBox}>
         <Title className={classes.title} order={1}>
           {title}
@@ -103,7 +115,8 @@ export default function Skills() {
                     >
                       View Repo
                     </Button>
-                    <Button>More Info</Button>
+                    {/* <Button onClick={open}>More Info</Button> */}
+                    <Button onClick={() => handleMoreInfoClick(repo)}>More Info</Button>
                   </Group>
               </Box>
             </Grid.Col>
