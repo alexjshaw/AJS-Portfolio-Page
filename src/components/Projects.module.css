@@ -1,0 +1,35 @@
+.projectsBox {
+  max-width: 960px;
+  border-radius: var(--mantine-radius-md);
+  margin-top: var(--mantine-spacing-xl);
+  margin-bottom: var(--mantine-spacing-xl);
+  border: 1px solid var(--mantine-color-gray-3);
+  background-color: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-5));;
+  box-shadow: 0 0 10px var(--mantine-color-gray-3);
+
+  @media (min-width: $mantine-breakpoint-xs) {
+    padding: var(--mantine-spacing-xl);
+  };
+}
+
+.title {
+  margin-bottom: 10px;
+  color: light-dark(var(--mantine-color-blue-3), var(--mantine-color-violet-4));
+}
+
+.subtitle {
+  margin-bottom: 10px;
+}
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--mantine-spacing-md);
+  max-height: 300px;
+  min-height: 150px;
+  border-radius: var(--mantine-radius-md);
+  box-shadow: var(--mantine-shadow-md);
+  border: 1px solid var(--mantine-color-gray-3);
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-7));;
+}

@@ -1,6 +1,7 @@
 import Hero from "../components/Hero"
 import About from "../components/About"
 import Skills from "../components/Skills"
+import Projects from "../components/Projects"
 import Section from "../components/utility/LandingSection"
 
 export default function LandingPage() {
@@ -14,6 +15,9 @@ export default function LandingPage() {
       </Section>
       <Section>
         <Skills />
+      </Section>
+      <Section withBackground={true}>
+        <Projects />
       </Section>
     </>
   )

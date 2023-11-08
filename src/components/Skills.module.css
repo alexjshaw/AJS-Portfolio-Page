@@ -13,8 +13,7 @@
 }
 
 .title {
-  margin-top: 10;
-  margin-bottom: 10;
+  margin-bottom: 10px;
   color: light-dark(var(--mantine-color-blue-3), var(--mantine-color-violet-4));
 }
 
