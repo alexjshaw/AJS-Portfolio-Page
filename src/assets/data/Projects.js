@@ -7,6 +7,11 @@ import ArchersNewUserDark from "../projectImages/ArchersNewUserDark.webp"
 import ArchersNewUserLight from "../projectImages/ArchersNewUserLight.webp"
 import ArchersInProgressDark from "../projectImages/ArchersInProgressDark.webp"
 import ArchersInProgressLight from "../projectImages/ArchersInProgressLight.webp"
+import FrontWeather from "../projectImages/FrontWeather.webp"
+import FrontServices from "../projectImages/FrontServices.webp"
+import FrontLogin from "../projectImages/FrontLogin.webp"
+import FrontLists from "../projectImages/FrontLists.webp"
+import FrontListEdit from "../projectImages/FrontListEdit.webp"
 
 export const projects = [
   {
@@ -28,6 +33,7 @@ export const projects = [
       "ESLint"
     ],
     subSections: [],
+    gallery: []
   },
   {
     name: "Archers-Toolkit-Frontend",
@@ -99,25 +105,29 @@ export const projects = [
         images: [ArchersInProgressDark, ArchersInProgressLight]
       }
     ],
+    gallery: []
   },
   {
     name: "ajs-individual-frontend",
-    subSections: [
-      {
-        title: "Title frontend 1",
-        description: "Description Archers 1",
-        images: []
-      },
-      {
-        title: "Title frontend 2",
-        description: "Description Archers 2",
-        images: []
-      },
-      {
-        title: "Title frontend 3",
-        description: "Description Archers 3",
-        images: []
-      }
+    title: "Frontend Individual Project",
+    intro: [
+      "This project was undertaken towards the end of the front-end portion of the Boolean UK bootcamp. At this stage we had spent around 8 weeks learning React, and we were given 5 days to put in to practice what we had learnt.",
+      "My idea was to take the common `to do list` project and evolve it through the integration of API sources, giving theoretical uses such as having a list of movies where each new item automatically fetched the IMDB details of that movie, then being able to select any film in your list and look up cinema showings in your area.",
+      "Given the short time frame it obviously wasn't feasible to follow this idea all the way to its conclusion, so I chose to set three targets to achieve.",
+      "1: Build the design using a component library, something that we had not yet covered, and use some new styling elements.",
+      "2: Have a functional, single-page web app with navigation and reactive elements.",
+      "3: Have at least one API source set up that prompted the user for relevant information, completed a request and correctly handled the response.",
+      "Overall I am pleased with this project. The page was built using Material-UI, I implemented a reactive masonry layout, had a functional list system that enabled creation, editing, deletion and favouriting lists, and integrated a weather API that gave the user a couple of different ways to interact with it.",
+      "Given how early on in my learning this was, and the short timeframe permitted, I think it was a good effort and I took a lot from this project that certainly helped me going forwards."
     ],
+    tech: [
+      "JavaScript",
+      "React",
+      "React Router",
+      "MUI",
+      "Express"
+    ],
+    subSections: [],
+    gallery: [FrontWeather, FrontServices, FrontLogin, FrontLists, FrontListEdit]
   }
 ];

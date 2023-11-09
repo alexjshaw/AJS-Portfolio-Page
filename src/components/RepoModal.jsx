@@ -1,17 +1,18 @@
 /* eslint-disable react/prop-types */
 // RepoModal.js
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Text,
   Title,
   Container,
-  List,
   Group,
   Button,
   Grid,
-  Center,
+  Image,
 } from "@mantine/core";
+import { useMediaQuery } from '@mantine/hooks';
 import { projects } from "../assets/data/Projects";
+import { Carousel } from "@mantine/carousel";
 import classes from "./RepoModal.module.css";
 
 const ImageRotator = ({ images }) => {
@@ -42,6 +43,18 @@ const ImageRotator = ({ images }) => {
 
 const RepoModal = ({ repo, handleRepoClick }) => {
   const project = projects.find((p) => p.name === repo.name);
+  const narrowView = useMediaQuery('(max-width: 62em)')
+
+  const carouselSlides = project.gallery.map((imageSrc, index) => (
+    <Carousel.Slide key={index}>
+      <Image
+        src={imageSrc}
+        alt={`Gallery image ${index}`}
+        style={{ maxHeight: "350px", width: "auto", maxWidth: "100%" }}
+        fit="contain"
+      />
+    </Carousel.Slide>
+  ));
 
   return (
     <Container fluid>
@@ -69,57 +82,70 @@ const RepoModal = ({ repo, handleRepoClick }) => {
           Features
         </Title>
       )}
-      {project &&
+            {project &&
         project.subSections.map((subSection, index) => (
           <Grid key={index} mt={10} mb={10}>
-            {index % 2 === 0 && (
-              <Grid.Col
-                span="auto"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                }}
-              >
-                <Title order={4} mb={4}>
-                  {subSection.title}
-                </Title>
-                {subSection.description.map((item, index) => (
-                  <Text key={index}>{item}</Text>
+            {!narrowView && index % 2 === 0 && (
+              <Grid.Col span="auto" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <Title order={4} mb={4}>{subSection.title}</Title>
+                {subSection.description.map((desc, descIndex) => (
+                  <Text key={descIndex}>{desc}</Text>
                 ))}
               </Grid.Col>
             )}
+
             <Grid.Col
-              span={5}
+              span={narrowView ? 12 : 5}
               style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
               }}
             >
               {subSection.images && subSection.images.length > 0 && (
-                <ImageRotator images={subSection.images} />
+                <ImageRotator images={subSection.images} maxHeight={narrowView ? '350px' : 'auto'} />
               )}
             </Grid.Col>
-            {index % 2 !== 0 && (
-              <Grid.Col
-                span="auto"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                }}
-              >
-                <Title order={4} mb={4}>
-                  {subSection.title}
-                </Title>
-                {subSection.description.map((item, index) => (
-                  <Text key={index}>{item}</Text>
+
+            {!narrowView && index % 2 !== 0 && (
+              <Grid.Col span="auto" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <Title order={4} mb={4}>{subSection.title}</Title>
+                {subSection.description.map((desc, descIndex) => (
+                  <Text key={descIndex}>{desc}</Text>
                 ))}
               </Grid.Col>
             )}
+
+            {narrowView && (
+              <>
+                <Grid.Col span={12}>
+                  <Title order={4} mb={4}>{subSection.title}</Title>
+                  {subSection.description.map((desc, descIndex) => (
+                    <Text key={descIndex}>{desc}</Text>
+                  ))}
+                </Grid.Col>
+              </>
+            )}
           </Grid>
         ))}
+      {project && project.gallery.length > 0 && (
+        <Group mb={10}>
+          <Title className={classes.title} order={2}>
+            Gallery
+          </Title>
+          <Carousel
+            slideSize="auto"
+            align="start"
+            slideGap="md"
+            controlsOffset="xs"
+            controlSize={25}
+            loop
+            height={350}
+          >
+            {carouselSlides}
+          </Carousel>
+        </Group>
+      )}
       <Button
         className={classes.button}
         onClick={(event) => handleRepoClick(event, repo.svn_url)}
@@ -131,10 +157,3 @@ const RepoModal = ({ repo, handleRepoClick }) => {
 };
 
 export default RepoModal;
-
-/*
-What does each page need to contain?
-Introduction/Background
-Tech Stack
-Screenshots of various sections
-*/
