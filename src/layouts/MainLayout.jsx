@@ -27,7 +27,7 @@ export function MainLayout() {
   const handleLinkClick = (e, link) => {
     e.preventDefault();
     setActive(link);
-    navigate("/");
+    navigate(link);
     close()
   };
 
@@ -86,7 +86,6 @@ export function MainLayout() {
       </AppShell.Navbar>
 
       <Outlet />
-      {/* <AppShell.Footer>Footer</AppShell.Footer> */}
     </AppShell>
     <MainFooter socialLinkItems={socialLinkItems} />
     </>

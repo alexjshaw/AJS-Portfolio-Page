@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDisclosure } from "@mantine/hooks";
+import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import {
   Box,
   Modal,
@@ -10,6 +10,7 @@ import {
   Title,
   Button,
   Badge,
+  Center
 } from "@mantine/core";
 import RepoModal from "./RepoModal"
 import classes from "./Projects.module.css";
@@ -47,6 +48,8 @@ export default function Skills() {
   const [repos, setRepos] = useState([]);
   const [opened, { open, close }] = useDisclosure(false);
   const [selectedRepo, setSelectedRepo] = useState(null);
+  const narrowView = useMediaQuery('(min-width: 62em)')
+  const tinyView = useMediaQuery('(min-width: 48em)')
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -137,9 +140,13 @@ export default function Skills() {
             </Grid.Col>
           ))}
         </Grid>
+        <Center>
         <GitHubCalendar
             username="alexjshaw"
+            blockSize={narrowView ? 12.5 : 8}
+            fontSize={narrowView ? 14 : 10}
           />
+          </Center>
       </Box>
     </Container>
   );

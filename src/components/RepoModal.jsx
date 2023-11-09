@@ -16,7 +16,7 @@ import classes from "./RepoModal.module.css";
 
 const ImageRotator = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const narrowView = useMediaQuery('(max-width: 36em)')
+  const narrowView = useMediaQuery('(max-width: 62em)')
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -146,8 +146,8 @@ const RepoModal = ({ repo, handleRepoClick }) => {
             slideGap="md"
             controlsOffset="xs"
             controlSize={25}
-            loop
             height={350}
+            withIndicators
           >
             {carouselSlides}
           </Carousel>

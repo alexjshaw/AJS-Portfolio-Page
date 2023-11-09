@@ -22,8 +22,20 @@ export default function Routes() {
       element: <MainLayout />,
       children: [{ path: "", element: <LandingPage />}]
     },
+    {
+      path: '/about',
+      element: <MainLayout />,
+      children: [{ path: "", element: <AboutPage />}]
+    },
+    {
+      path: '/skills',
+      element: <MainLayout />,
+      children: [{ path: "", element: <SkillsPage />}]
+    },
     { path: '*', element: <Navigate to="/404" replace /> },
   ])
 }
 
 const LandingPage = Loadable(lazy(() => import("../pages/LandingPage")));
+const AboutPage = Loadable(lazy(() => import("../pages/AboutPage")))
+const SkillsPage = Loadable(lazy(() => import("../pages/SkillsPage")))

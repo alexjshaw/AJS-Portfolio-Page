@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import loading from "../../assets/animations/loading.json";
 
 const FallbackLoader = forwardRef(
-  ({ children, ...others }, ref) => {
+  ({ ...others }, ref) => {
     return (
       <Center>
         <Box ref={ref} {...others}>
