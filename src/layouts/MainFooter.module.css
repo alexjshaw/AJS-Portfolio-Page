@@ -1,0 +1,17 @@
+.footerWrapper {
+  background-color: light-dark(rgba(255, 255, 255), rgba(0, 0, 0));
+  width: 100%;
+}
+
+.footerContent {
+  background-color: light-dark(rgba(255, 255, 255), rgba(0, 0, 0));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--mantine-spacing-md);
+  padding-bottom: var(--mantine-spacing-md);
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    flex-direction: column;
+  }
+}

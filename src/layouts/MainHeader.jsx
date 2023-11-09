@@ -10,7 +10,6 @@ export function MainHeader({ opened, toggle, socialLinkItems, linkItems }) {
           <Burger opened={opened} onClick={toggle} size="sm" className={classes.burger} />
           <Group
             className={classes.socialLinks}
-            spacing={0}
             position="right"
             mr={25}
           >

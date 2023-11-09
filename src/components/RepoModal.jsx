@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-// RepoModal.js
 import { useState, useEffect } from "react";
 import {
   Text,
@@ -17,7 +16,7 @@ import classes from "./RepoModal.module.css";
 
 const ImageRotator = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const narrowView = useMediaQuery('(max-width: 62em)')
+  const narrowView = useMediaQuery('(max-width: 36em)')
 
   useEffect(() => {
     const intervalId = setInterval(() => {

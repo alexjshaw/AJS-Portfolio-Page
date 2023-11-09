@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 
 import classes from "./MainLayout.module.css";
 import { MainHeader } from "./MainHeader";
+import { MainFooter } from "./MainFooter";
 import { socialLinks } from "../assets/data/SocialLinks";
 import { links } from "../assets/data/NavLinks";
 
@@ -64,6 +65,7 @@ export function MainLayout() {
   ));
 
   return (
+    <>
     <AppShell
       header={{ height: 70 }}
       navbar={{
@@ -84,6 +86,9 @@ export function MainLayout() {
       </AppShell.Navbar>
 
       <Outlet />
+      {/* <AppShell.Footer>Footer</AppShell.Footer> */}
     </AppShell>
+    <MainFooter socialLinkItems={socialLinkItems} />
+    </>
   );
 }
