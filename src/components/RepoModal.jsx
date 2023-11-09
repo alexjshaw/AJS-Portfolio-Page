@@ -17,6 +17,7 @@ import classes from "./RepoModal.module.css";
 
 const ImageRotator = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const narrowView = useMediaQuery('(max-width: 62em)')
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -31,11 +32,11 @@ const ImageRotator = ({ images }) => {
       src={images[currentImageIndex]}
       alt={`Slide ${currentImageIndex}`}
       style={{
-        width: "100%",
         maxWidth: "100%",
         display: "block",
         marginLeft: "auto",
-        marginRight: "0",
+        marginRight: narrowView ? "auto" : "0",
+        maxHeight: "350px",
       }}
     />
   );
@@ -83,51 +84,58 @@ const RepoModal = ({ repo, handleRepoClick }) => {
         </Title>
       )}
             {project &&
-        project.subSections.map((subSection, index) => (
-          <Grid key={index} mt={10} mb={10}>
-            {!narrowView && index % 2 === 0 && (
-              <Grid.Col span="auto" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <Title order={4} mb={4}>{subSection.title}</Title>
-                {subSection.description.map((desc, descIndex) => (
-                  <Text key={descIndex}>{desc}</Text>
-                ))}
-              </Grid.Col>
+  project.subSections.map((subSection, index) => (
+    <Grid key={index} mt={10} mb={10}>
+      {narrowView && (
+        <>
+          <Grid.Col span={12}>
+            <Title order={4} mb={4}>{subSection.title}</Title>
+            {subSection.description.map((desc, descIndex) => (
+              <Text key={descIndex}>{desc}</Text>
+            ))}
+          </Grid.Col>
+          <Grid.Col span={12} style={{ display: 'flex', justifyContent: 'center' }}>
+            {subSection.images && subSection.images.length > 0 && (
+              <ImageRotator images={subSection.images} />
             )}
+          </Grid.Col>
+        </>
+      )}
 
-            <Grid.Col
-              span={narrowView ? 12 : 5}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-              }}
-            >
-              {subSection.images && subSection.images.length > 0 && (
-                <ImageRotator images={subSection.images} maxHeight={narrowView ? '350px' : 'auto'} />
-              )}
+      {!narrowView && (
+        <>
+          {index % 2 === 0 && (
+            <Grid.Col span="auto" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <Title order={4} mb={4}>{subSection.title}</Title>
+              {subSection.description.map((desc, descIndex) => (
+                <Text key={descIndex}>{desc}</Text>
+              ))}
             </Grid.Col>
-
-            {!narrowView && index % 2 !== 0 && (
-              <Grid.Col span="auto" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <Title order={4} mb={4}>{subSection.title}</Title>
-                {subSection.description.map((desc, descIndex) => (
-                  <Text key={descIndex}>{desc}</Text>
-                ))}
-              </Grid.Col>
+          )}
+          <Grid.Col
+            span={5}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+          >
+            {subSection.images && subSection.images.length > 0 && (
+              <ImageRotator images={subSection.images} />
             )}
-
-            {narrowView && (
-              <>
-                <Grid.Col span={12}>
-                  <Title order={4} mb={4}>{subSection.title}</Title>
-                  {subSection.description.map((desc, descIndex) => (
-                    <Text key={descIndex}>{desc}</Text>
-                  ))}
-                </Grid.Col>
-              </>
-            )}
-          </Grid>
-        ))}
+          </Grid.Col>
+          {index % 2 !== 0 && (
+            <Grid.Col span="auto" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <Title order={4} mb={4}>{subSection.title}</Title>
+              {subSection.description.map((desc, descIndex) => (
+                <Text key={descIndex}>{desc}</Text>
+              ))}
+            </Grid.Col>
+          )}
+        </>
+      )}
+    </Grid>
+  ))}
       {project && project.gallery.length > 0 && (
         <Group mb={10}>
           <Title className={classes.title} order={2}>
