@@ -14,6 +14,7 @@ import {
 import RepoModal from "./RepoModal"
 import classes from "./Projects.module.css";
 import { BrandGithub } from "tabler-icons-react";
+import GitHubCalendar from "react-github-calendar";
 
 const ReposToDisplay = [
   "AJS-Portfolio-Page",
@@ -96,7 +97,7 @@ export default function Skills() {
         <Text className={classes.subtitle}>
           {description}
         </Text>
-        <Grid>
+        <Grid mb={20}>
           {repos.map((repo, index) => (
             <Grid.Col span={{ base: 12, md: 6, lg: 4 }} key={index}>
               <Box className={classes.projectCard}>
@@ -136,6 +137,9 @@ export default function Skills() {
             </Grid.Col>
           ))}
         </Grid>
+        <GitHubCalendar
+            username="alexjshaw"
+          />
       </Box>
     </Container>
   );
