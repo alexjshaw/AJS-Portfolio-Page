@@ -11,12 +11,14 @@ import { MainHeader } from "./MainHeader";
 import { MainFooter } from "./MainFooter";
 import { socialLinks } from "../assets/data/SocialLinks";
 import { links } from "../assets/data/NavLinks";
+import { useActiveLink } from "../context/ActiveLinkContext";
 
 export function MainLayout() {
   const [opened, { toggle, close }] = useDisclosure();
   const navigate = useNavigate();
-  const [active, setActive] = useState(links[0].link);
+  // const [active, setActive] = useState(links[0].link);
   const navbarBreakpoint = useMediaQuery("(min-width: 48em)");
+  const { active, setActive } = useActiveLink()
 
   useEffect(() => {
     if (navbarBreakpoint && opened) {
