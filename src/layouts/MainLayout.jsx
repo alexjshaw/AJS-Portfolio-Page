@@ -66,27 +66,31 @@ export function MainLayout() {
 
   return (
     <AppShell
-        header={{ height: 70 }}
-        navbar={{
-          width: 300,
-          breakpoint: "sm",
-          collapsed: { desktop: true, mobile: !opened },
-        }}
-        padding="md"
-      >
-        <MainHeader
-          opened={opened}
-          toggle={toggle}
-          socialLinkItems={socialLinkItems}
-          linkItems={linkItems}
-        />
-        <AppShell.Navbar py="md" px={4}>
-          {linkItems}
-        </AppShell.Navbar>
+      header={{ height: 70 }}
+      navbar={{
+        width: 300,
+        breakpoint: "sm",
+        collapsed: { desktop: true, mobile: !opened },
+      }}
+      padding="md"
+    >
+      <AppShell.Header>
+      <MainHeader
+        opened={opened}
+        toggle={toggle}
+        socialLinkItems={socialLinkItems}
+        linkItems={linkItems}
+      />
+      </AppShell.Header>
+      <AppShell.Navbar py="md" px={4}>
+        {linkItems}
+      </AppShell.Navbar>
+      <AppShell.Main className={classes.main}>
         <Outlet />
-        <AppShell.Footer>
+      </AppShell.Main>
+      <AppShell.Footer>
         <MainFooter socialLinkItems={socialLinkItems} />
-        </AppShell.Footer>
-      </AppShell>
+      </AppShell.Footer>
+    </AppShell>
   );
 }

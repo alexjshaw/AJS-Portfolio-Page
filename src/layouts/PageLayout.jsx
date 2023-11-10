@@ -7,11 +7,14 @@ import classes from "./PageLayout.module.css"
 const PageLayout = forwardRef(
   ({ children }, ref) => {
     return (
-      <Center ref={ref} mt={70} className={classes.pageCenter}>
+      <Center ref={ref} className={classes.pageCenter}>
         <Box className={classes.pageBox}>
           {children}
         </Box>
       </Center>
+        // <Box className={classes.pageBox}>
+        //   {children}
+        // </Box>
     );
   }
 );
