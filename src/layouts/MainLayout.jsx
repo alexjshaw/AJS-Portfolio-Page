@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
@@ -16,7 +16,6 @@ import { useActiveLink } from "../context/ActiveLinkContext";
 export function MainLayout() {
   const [opened, { toggle, close }] = useDisclosure();
   const navigate = useNavigate();
-  // const [active, setActive] = useState(links[0].link);
   const navbarBreakpoint = useMediaQuery("(min-width: 48em)");
   const { active, setActive } = useActiveLink()
 
