@@ -5,7 +5,6 @@
   /* min-height: 85vh; */
 }
 
-.test {
+.pageCenter {
   background-color: light-dark(var(--mantine-color-blue-1), var(--mantine-color-indigo-1));
-  
 }

@@ -7,7 +7,7 @@ import classes from "./PageLayout.module.css"
 const PageLayout = forwardRef(
   ({ children }, ref) => {
     return (
-      <Center ref={ref} mt={70} className={classes.test}>
+      <Center ref={ref} mt={70} className={classes.pageCenter}>
         <Box className={classes.pageBox}>
           {children}
         </Box>

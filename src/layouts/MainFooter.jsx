@@ -3,7 +3,6 @@ import { useMediaQuery } from '@mantine/hooks';
 import classes from "./MainFooter.module.css";
 
 export function MainFooter({ socialLinkItems }) {
-  const narrowView = useMediaQuery('(max-width: 62em)')
   
   return (
     <div className={classes.footerWrapper}>

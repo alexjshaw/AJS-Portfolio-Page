@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
-import { AppShell, ActionIcon, Container } from "@mantine/core";
+import { AppShell, ActionIcon } from "@mantine/core";
 
 import { motion } from "framer-motion";
 
@@ -65,7 +65,7 @@ export function MainLayout() {
   ));
 
   return (
-    <Container className={classes.mainContainer}>
+    <div className={classes.mainContainer}>
       <AppShell
         header={{ height: 70 }}
         navbar={{
@@ -86,8 +86,10 @@ export function MainLayout() {
         </AppShell.Navbar>
 
         <Outlet />
-      </AppShell>
+        <AppShell.Footer>
       <MainFooter socialLinkItems={socialLinkItems} />
-    </Container>
+      </AppShell.Footer>
+      </AppShell>
+    </div>
   );
 }
