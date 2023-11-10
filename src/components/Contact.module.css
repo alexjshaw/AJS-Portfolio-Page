@@ -1,0 +1,47 @@
+.contactBox {
+  max-width: 960px;
+  border-radius: var(--mantine-radius-md);
+  margin-top: var(--mantine-spacing-xl);
+  margin-bottom: var(--mantine-spacing-xl);
+  border: 1px solid var(--mantine-color-gray-3);
+  background-color: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-5));;
+  box-shadow: var(--mantine-shadow-xl);
+
+  @media (min-width: $mantine-breakpoint-xs) {
+    padding: var(--mantine-spacing-xl);
+  };
+}
+
+.title {
+  margin-bottom: 10px;
+  color: light-dark(var(--mantine-color-blue-3), var(--mantine-color-violet-4));
+}
+
+.description {
+  max-width: 300px;
+}
+
+.form {
+  background-color: light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-7));;
+  padding: var(--mantine-spacing-xl);
+  border-radius: var(--mantine-radius-md);
+  box-shadow: var(--mantine-shadow-xl);
+}
+
+.button {
+  background-color: light-dark(var(--mantine-color-blue-3), var(--mantine-color-violet-4));
+}
+
+.button:hover {
+  background-color: light-dark(var(--mantine-color-blue-1), var(--mantine-color-violet-6));
+  color: light-dark(var(--mantine-color-dark-9), var(--mantine-color-white));
+}
+
+.iconBox {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: var(--mantine-spacing-md);
+}

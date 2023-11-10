@@ -37,6 +37,11 @@ export default function Routes() {
       element: <MainLayout />,
       children: [{ path: "", element: <ProjectsPage />}]
     },
+    {
+      path: '/contact',
+      element: <MainLayout />,
+      children: [{ path: "", element: <ContactPage />}]
+    },
     { path: '*', element: <Navigate to="/404" replace /> },
   ])
 }
@@ -45,3 +50,4 @@ const LandingPage = Loadable(lazy(() => import("../pages/LandingPage")));
 const AboutPage = Loadable(lazy(() => import("../pages/AboutPage")))
 const SkillsPage = Loadable(lazy(() => import("../pages/SkillsPage")))
 const ProjectsPage = Loadable(lazy(() => import("../pages/ProjectsPage")))
+const ContactPage = Loadable(lazy(() => import("../pages/ContactPage")))
