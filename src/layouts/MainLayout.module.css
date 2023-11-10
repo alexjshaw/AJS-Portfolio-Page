@@ -30,10 +30,10 @@
   transform: scale(1.20);
 }
 
-.mainContainer {
+/* .mainContainer {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* full viewport height */
+  min-height: 100vh;
   min-width: 100%;
   padding: 0;
-}
+} */

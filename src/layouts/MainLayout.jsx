@@ -65,8 +65,7 @@ export function MainLayout() {
   ));
 
   return (
-    <div className={classes.mainContainer}>
-      <AppShell
+    <AppShell
         header={{ height: 70 }}
         navbar={{
           width: 300,
@@ -84,12 +83,10 @@ export function MainLayout() {
         <AppShell.Navbar py="md" px={4}>
           {linkItems}
         </AppShell.Navbar>
-
         <Outlet />
         <AppShell.Footer>
-      <MainFooter socialLinkItems={socialLinkItems} />
-      </AppShell.Footer>
+        <MainFooter socialLinkItems={socialLinkItems} />
+        </AppShell.Footer>
       </AppShell>
-    </div>
   );
 }
