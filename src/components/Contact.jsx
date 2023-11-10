@@ -14,6 +14,7 @@ import { useForm } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
 import { MapPin, At, BrandGithub, Check, ExclamationMark } from "tabler-icons-react";
 import emailjs from "@emailjs/browser";
+import { serviceId, templateId, publicKey } from "../emailConfig";
 import classes from "./Contact.module.css"
 
 function ContactIcon({ title, text, Icon }) {
@@ -54,10 +55,6 @@ function ContactIcons({ data = ContactData }) {
 }
 
 export default function Contact() {
-
-  const serviceId = "service_def36uh"
-  const templateId = "template_s873szk"
-  const publicKey = "iqjHVs-gfEXx0Bxzo"
 
   const form = useForm({
     initialValues: {
