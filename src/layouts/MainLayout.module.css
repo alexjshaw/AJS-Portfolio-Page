@@ -29,3 +29,11 @@
   color: var(--mantine-color-white);
   transform: scale(1.20);
 }
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full viewport height */
+  min-width: 100%;
+  padding: 0;
+}

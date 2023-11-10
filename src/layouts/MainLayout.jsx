@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
-import { AppShell, ActionIcon } from "@mantine/core";
+import { AppShell, ActionIcon, Container } from "@mantine/core";
 
 import { motion } from "framer-motion";
 
@@ -16,19 +16,19 @@ export function MainLayout() {
   const [opened, { toggle, close }] = useDisclosure();
   const navigate = useNavigate();
   const [active, setActive] = useState(links[0].link);
-  const navbarBreakpoint = useMediaQuery("(min-width: 48em)")
+  const navbarBreakpoint = useMediaQuery("(min-width: 48em)");
 
   useEffect(() => {
     if (navbarBreakpoint && opened) {
-      close()
+      close();
     }
-  }, [navbarBreakpoint])
+  }, [navbarBreakpoint]);
 
   const handleLinkClick = (e, link) => {
     e.preventDefault();
     setActive(link);
     navigate(link);
-    close()
+    close();
   };
 
   const linkItems = links.map((link) => (
@@ -65,29 +65,29 @@ export function MainLayout() {
   ));
 
   return (
-    <>
-    <AppShell
-      header={{ height: 70 }}
-      navbar={{
-        width: 300,
-        breakpoint: "sm",
-        collapsed: { desktop: true, mobile: !opened },
-      }}
-      padding="md"
-    >
-      <MainHeader
-        opened={opened}
-        toggle={toggle}
-        socialLinkItems={socialLinkItems}
-        linkItems={linkItems}
-      />
-      <AppShell.Navbar py="md" px={4}>
-        {linkItems}
-      </AppShell.Navbar>
+    <Container className={classes.mainContainer}>
+      <AppShell
+        header={{ height: 70 }}
+        navbar={{
+          width: 300,
+          breakpoint: "sm",
+          collapsed: { desktop: true, mobile: !opened },
+        }}
+        padding="md"
+      >
+        <MainHeader
+          opened={opened}
+          toggle={toggle}
+          socialLinkItems={socialLinkItems}
+          linkItems={linkItems}
+        />
+        <AppShell.Navbar py="md" px={4}>
+          {linkItems}
+        </AppShell.Navbar>
 
-      <Outlet />
-    </AppShell>
-    <MainFooter socialLinkItems={socialLinkItems} />
-    </>
+        <Outlet />
+      </AppShell>
+      <MainFooter socialLinkItems={socialLinkItems} />
+    </Container>
   );
 }

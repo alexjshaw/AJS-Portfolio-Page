@@ -4,8 +4,6 @@ import { Box, Center } from "@mantine/core";
 import { Helmet } from "react-helmet-async";
 import classes from "./PageLayout.module.css"
 
-const siteName = "Alex Shaw Portfolio"
-
 const PageLayout = forwardRef(
   ({ children }, ref) => {
     return (

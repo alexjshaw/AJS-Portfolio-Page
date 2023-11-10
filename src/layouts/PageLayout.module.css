@@ -2,9 +2,10 @@
   /* margin-left: -16px;
   margin-right: -16px; */
   /* background-color: light-dark(var(--mantine-color-blue-1), var(--mantine-color-indigo-1)); */
-  /* min-height: 100vh; */
+  /* min-height: 85vh; */
 }
 
 .test {
   background-color: light-dark(var(--mantine-color-blue-1), var(--mantine-color-indigo-1));
+  
 }
