@@ -1,8 +1,27 @@
-# React + Vite
+# Alex Shaw Portfolio
+Live Page: [https://ajs-portfolio.vercel.app/](https://ajs-portfolio.vercel.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Overview
+Having completed a 6 month, full-stack bootcamp one of my first tasks was to build myself a portfolio, and here we are.
+My aim when starting this site was twofold:
 
-Currently, two official plugins are available:
+ 1. Come up with a design that was visually interesting without being cluttered.
+ 2. Continue to build my knowledge and use tools that I have not used previously.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I believe that both of these aims have been accomplished.
+
+# Core Technologies
+
+ - Vite
+ - React
+ - JavaScript
+ - Mantine
+ - NPM
+ - PostCSS
+
+# New To Me
+
+- Framer Motion
+- LottieFiles
+- emailJS
+- highlight.js
