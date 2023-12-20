@@ -140,13 +140,13 @@ export default function Skills() {
             </Grid.Col>
           ))}
         </Grid>
-        <Center>
+        {/* <Center>
         <GitHubCalendar
             username="alexjshaw"
             blockSize={narrowView ? 12.5 : 8}
             fontSize={narrowView ? 14 : 10}
           />
-          </Center>
+          </Center> */}
       </Box>
     </Container>
   );
