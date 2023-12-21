@@ -129,5 +129,34 @@ export const projects = [
     ],
     subSections: [],
     gallery: [FrontWeather, FrontServices, FrontLogin, FrontLists, FrontListEdit]
+  },
+  {
+    name: "Bowls-Booking-App",
+    title: "Bowls Booking App",
+    intro: [
+      "This project is is something that has been requested by a local bowls club, as they try to move away from pen and paper methods and bring some of their systems in to the 21st century.",
+      "To begin with we are focusing on rink bookings and management of club events. Giving members an easy way to view available rinks, make their own bookings, and sign up for upcoming club events, created by the clubs admins.",
+      "Given the short time frame it obviously wasn't feasible to follow this idea all the way to its conclusion, so I chose to set three targets to achieve.",
+      "Due to the sport being one that generally attracts an older crowd, one of the highest priorities is usability. It is vital to ensure that the interface is clean, easy to understand, simple to interact with, and that the user experience is consistent across both desktop and mobile.",
+    ],
+    tech: [
+      "JavaScript",
+      "React",
+      "React Router",
+      "React Hook Form",
+      "Auth0",
+      "Zod",
+      "Mantine",
+      "PostCSS",
+      "ESLint",
+      "CORS",
+      "Express",
+      "MongoDB",
+      "Mongoose",
+      "Helmet",
+      "Morgan"
+    ],
+    subSections: [],
+    gallery: []
   }
 ];

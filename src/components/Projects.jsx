@@ -21,6 +21,7 @@ const ReposToDisplay = [
   "AJS-Portfolio-Page",
   "Archers-Toolkit-Frontend",
   "ajs-individual-frontend",
+  "Bowls-Booking-App"
 ];
 const title = "Projects"
 const description = "A small selection of projects I've worked on, both throughout my time studying on the Boolean Bootcamp and in my own time."
