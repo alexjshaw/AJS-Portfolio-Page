@@ -8,6 +8,7 @@ import {
   Button,
   Grid,
   Image,
+  Stack
 } from "@mantine/core";
 import { useMediaQuery } from '@mantine/hooks';
 import { projects } from "../assets/data/Projects";
@@ -61,11 +62,11 @@ const RepoModal = ({ repo, handleRepoClick }) => {
       <Title className={classes.title} order={2}>
         {project.title}
       </Title>
-      <Group mb={10}>
+      <Stack mb={10}>
         {project.intro.map((paragraph, index) => (
           <Text key={index}>{paragraph}</Text>
         ))}
-      </Group>
+      </Stack>
       <Title className={classes.title} order={2}>
         Tech
       </Title>
