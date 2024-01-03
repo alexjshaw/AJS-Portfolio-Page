@@ -8,7 +8,7 @@ function TypedText() {
   return (
     <Typewriter
       options={{
-        strings: ["Full Stack Developer", "Engineering Graduate", "Not a Designer!", "Nerd"],
+        strings: ["Full Stack Developer", "Engineering Graduate", "Nerd"],
         autoStart: true,
         loop: true,
         delay: 60,
